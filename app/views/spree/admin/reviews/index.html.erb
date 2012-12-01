@@ -44,7 +44,9 @@
 <% end %>
 </table>
 
-<%= paginate @reviews -%>
+<% if @reviews.respond_to?(:num_pages) %>
+  <%= paginate @reviews %>
+<% end %>
 
 <% content_for :sidebar do %>
   <div class="box" data-hook="admin_reviews_index_search">
@@ -54,7 +56,7 @@
       <p>
         <%= label_tag nil, t(:user) %><br />
         <%= f.text_field :name_cont, :size => 25 %>
-      </p> 
+      </p>
 
       <p>
         <%= label_tag nil, t(:title) -%><br/>

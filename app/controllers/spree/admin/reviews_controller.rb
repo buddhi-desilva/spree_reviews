@@ -29,6 +29,10 @@ private
     params[:q][:approved_eq] = false if params[:q][:approved_eq].nil?
 
     @search = Spree::Review.ransack(params[:q])
-    @collection = @search.result.includes([:product, :user, :feedback_reviews]).page(params[:page]).per(params[:per_page])
+    @collection = Spree::Review.find(:all)
+    # @collection = @search.result.includes([:product, :user, :feedback_reviews]).page(params[:page]).per(params[:per_page])
+
+    logger.debug "=========================== Collection: #{@collection}============================"
+    @collection
   end
 end

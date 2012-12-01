@@ -10,7 +10,7 @@ class Spree::Review < ActiveRecord::Base
   validates_numericality_of :rating, :only_integer => true
 
   default_scope order("spree_reviews.created_at DESC")
-  
+
   scope :localized, lambda { |lc| where('spree_reviews.locale = ?', lc) }
 
   attr_protected :user_id, :product_id, :ip_address, :approved

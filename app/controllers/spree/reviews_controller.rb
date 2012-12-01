@@ -18,7 +18,7 @@ class Spree::ReviewsController < Spree::BaseController
 
     @review = Spree::Review.new(params[:review])
     @review.product = @product
-    @review.user = spree_current_user if user_signed_in?
+    @review.user = spree_current_user if spree_current_user
     @review.ip_address = request.remote_ip
     @review.locale = I18n.locale.to_s if Spree::Reviews::Config[:track_locale]
 
